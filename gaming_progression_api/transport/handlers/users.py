@@ -17,13 +17,13 @@ router = APIRouter(
 )
 
 
-@router.get('/search', description='Поиск пользователей')
+@router.get('/search/{string}', description='Поиск пользователей')
 async def search_user_by_string(uow: UOWDep, string: str):
     user = await UsersService().search_user(uow, string)
     return user
 
 
-@router.get('/test', description='Добавление тестовыъ польователей')
+@router.post('/test', description='Добавление тестовыъ польователей')
 async def add_test_users(uow: UOWDep):
     user = await UsersService().add_users(uow)
     return user
